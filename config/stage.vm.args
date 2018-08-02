@@ -1,0 +1,4 @@
+## Name of the node
+-name cortet-stage@cortet-stage-ip
+## Cookie for distributed erlang
+-setcookie cortet-cookie

@@ -1,0 +1,29 @@
+// Codes range: -----:+++++
+package saya.ingw.wafa.type;
+
+// messageCode = ----5
+message Conversation {
+    required fixed64 CID = 1;
+}
+
+// messageCode = ----6
+message Board {
+    required fixed64 BID = 1;
+}
+
+// messageCode = ----7
+message Timeline {
+    oneof a {
+        Board board = 1;
+        Conversation conversation = 2;
+    }
+}
+
+// messageCode = ----8
+message Message {
+    required fixed64 timestamp = 1;
+    required fixed64 senderIID = 2;
+    required int64 seq = 3;
+    required Timeline timeline = 4;
+    required string body = 5;
+}

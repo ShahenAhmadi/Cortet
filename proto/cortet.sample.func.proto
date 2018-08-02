@@ -1,0 +1,5 @@
+package cortet.sample.func;
+import "cortet.sample.type.proto";
+// messageCode = 101
+message Call {
+}

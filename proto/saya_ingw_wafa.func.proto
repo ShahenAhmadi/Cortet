@@ -1,0 +1,21 @@
+// Codes range: -----:+++++
+package saya.ingw.wafa.func;
+
+import "saya_ingw_wafa.type.proto";
+import "saya_ingw_comn.type.proto";
+
+// messageCode = ---51
+// -> saya.ingw.wafa.comn.type.Done
+// -> saya.ingw.wafa.comn.type.Failure{code = 'INVALID_REQUEST'}
+// -> saya.ingw.wafa.comn.type.Failure{code = 'INTERNAL_SERVER_ERROR'}
+message Ping {
+    required fixed64 MicroTimeStamp = 1;
+}
+
+// messageCode = ---52
+// -> saya.ingw.wafa.comn.type.Done
+// -> saya.ingw.wafa.comn.type.Failure{code = 'INVALID_REQUEST'}
+// -> saya.ingw.wafa.comn.type.Failure{code = 'INTERNAL_SERVER_ERROR'}
+message DoSecurityCheck {
+    repeated saya.ingw.wafa.type.Message message = 1;
+}

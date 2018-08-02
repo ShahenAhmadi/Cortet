@@ -1,0 +1,23 @@
+// Codes range: *****:#####
+package saya.ingw.comn.type;
+
+// messageCode = ####1
+message Pong {
+    required fixed64 MicroTimeStamp = 1;
+}
+
+// messageCode = ####2
+message Done {
+}
+
+// messageCode = ####3
+enum FailureCode {
+    INTERNAL_SERVER_ERROR = 1;
+    INVALID_REQUEST = 2;
+}
+
+// messageCode = ####4
+message Failure {
+    required FailureCode code = 1;
+    optional string description = 2;
+}

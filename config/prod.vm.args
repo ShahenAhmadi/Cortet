@@ -1,0 +1,4 @@
+## Name of the node
+-name cortet-prod@cortet-prod-ip
+## Cookie for distributed erlang
+-setcookie cortet-cookie
