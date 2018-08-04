@@ -70,7 +70,6 @@ handle_call({send, Obj}, _From, #state{inbox = Inbox} = State) ->
     IngMsg = #ingw_message{object = Obj,
 			   type = request,
 			   tracking_id = get_unique_id(Inbox)},
-    
     {ok, Frame, TId} = cortet_codec:encode_frame(IngMsg),
     ok = gen_tcp:send(State#state.socket, Frame),
     Reply = {ok, TId},

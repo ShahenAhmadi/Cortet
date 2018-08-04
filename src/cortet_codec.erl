@@ -55,7 +55,7 @@ encode_frame(#ingw_message{type = Type,
     case cortet_dict:get_by_name(ObjName) of
         {ok, #ingw_object_info{code = ObjCode,
                                codec = ObjCodec}} ->
-            {ok, ObjBin} = encode_object(Obj, ObjCodec),
+	    {ok, ObjBin} = encode_object(Obj, ObjCodec),
             FrameLen = ?FRAME_INGW_BYTE_HEADER + byte_size(ObjBin),
             FrameHeader = <<FrameLen:?FRAME_INGW_BIT_LENGTH,
                             ObjCode:?FRAME_INGW_BIT_CODE,
@@ -82,7 +82,7 @@ decode_object(ObjBin, ObjName, ObjCodec) ->
 -spec encode_object(ingw_object()) -> {ok, ingw_object_bin()}.
 encode_object(Obj) ->
     ObjName = element(1, Obj),
-    {ok, #ingw_object_info{codec = ObjCodec}} = cortina_ingw_dict:get_by_name(ObjName),
+    {ok, #ingw_object_info{codec = ObjCodec}} = cortet_dict:get_by_name(ObjName),
     encode_object(Obj, ObjCodec).
 
 -spec encode_object(ingw_object(), ingw_object_codec()) -> {ok, ingw_object_bin()}.
@@ -91,7 +91,7 @@ encode_object(Obj, ObjCodec) ->
 
 -spec enum_value(ingw_object_name(), atom()) -> {ok, integer()} | {error, bad_enum}.
 enum_value(ObjName, Symbol) ->
-    {ok, #ingw_object_info{codec = ObjCodec}} = cortina_ingw_dict:get_by_name(ObjName),
+    {ok, #ingw_object_info{codec = ObjCodec}} = cortet_dict:get_by_name(ObjName),
     case catch (ObjCodec:enum_value_by_symbol(ObjName, Symbol)) of
         {'EXIT', _} ->
             {error, bad_enum};
@@ -102,7 +102,7 @@ enum_value(ObjName, Symbol) ->
 
 -spec enum_symbol(ingw_object_name(), integer()) -> {ok, atom()} | {error, bad_enum}.
 enum_symbol(ObjName, Value) ->
-    {ok, #ingw_object_info{codec = ObjCodec}} = cortina_ingw_dict:get_by_name(ObjName),
+    {ok, #ingw_object_info{codec = ObjCodec}} = cortet_dict:get_by_name(ObjName),
     case catch (ObjCodec:enum_symbol_by_value(ObjName, Value)) of
         {'EXIT', _} ->
             {error, bad_enum};

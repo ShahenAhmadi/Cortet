@@ -11,7 +11,7 @@
 -define(RingSize, 'size.Ring.Buffer.toveri').
 -define(ListsSayaIP, 'saya.listener.ip').
 
--define(Client, 10000).
+-define(Client, 10000). %%10K
 
 -include("cortet.hrl").
 -include("saya_ingw_wafa_func.hrl").
